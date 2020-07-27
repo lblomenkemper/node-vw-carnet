@@ -88,6 +88,21 @@ export default class CarnetAPIClient {
     return json;
   }
 
+   /**
+    * Get notifications.
+    *
+    * @return {Promise<CarnetJSONResponse>}
+    */
+  async getNotifications() {
+    const url = `${DASHBOARD_URL}/${this.carId}/-/emanager/get-notifications`;
+
+    this.logger.debug('>> getNotifications()');
+    const json = await this.triggerAction(url);
+    this.logger.debug('<< getNotifications() - response', json);
+
+    return json;
+  }
+
   /**
    * Get the fully loaded car info (?).
    *
