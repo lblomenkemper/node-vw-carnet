@@ -74,6 +74,19 @@ export default class CarnetAPIClient {
 
     return json;
   }
+  
+   /**
+    * Update data from the car.
+    *
+    * @return {Promise<CarnetJSONResponse>}
+    */
+  async updateDataFromCar() {
+    const url = `${DASHBOARD_URL}/${this.carId}/-/vsr/request-vsr`;
+
+    const json = await this.triggerAction(url);
+
+    return json;
+  }
 
   /**
    * Get the fully loaded car info (?).
