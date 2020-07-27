@@ -104,6 +104,24 @@ export default class CarnetAPIClient {
 
     return json;
   }
+  
+  /**
+   * Start/stop charging
+   *
+   * @param {boolean} start If `true` start, if `false` stop charging.
+   * @param {Number} soc Must contain the current SoC.
+   * @return {Promise<CarnetJSONResponse>}
+   */
+  async triggerCharging(start, soc) {
+    const url = `${DASHBOARD_URL}/${this.carId}/-/emanager/charge-battery`;
+
+    const json = await this.triggerAction(url, JSON.stringify({
+      batteryPercent: soc,
+      triggerAction: start
+    }));
+
+    return json;
+  }
 
   /**
    * Get the fully loaded car info (?).
