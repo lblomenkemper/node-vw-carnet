@@ -83,7 +83,9 @@ export default class CarnetAPIClient {
   async updateDataFromCar() {
     const url = `${DASHBOARD_URL}/${this.carId}/-/vsr/request-vsr`;
 
+    this.logger.debug('>> updateDataFromCar()');
     const json = await this.triggerAction(url);
+    this.logger.debug('<< updateDataFromCar() - response', json);
 
     return json;
   }
